@@ -4,12 +4,12 @@ import { v4 as uuidV4 } from "uuid";
 import postData from "@/data/post-data.json";
 import { currDatetime } from "@/lib/dateUtils";
 
-interface PostContextType {
+type PostContextType = {
   posts: Post[];
   addPost: (title: string, content: string) => void;
   editPost: (id: string, title: string, content: string) => void;
   removePost: (id: string) => void;
-}
+};
 
 const PostContext = createContext<PostContextType | undefined>(undefined);
 
@@ -21,22 +21,22 @@ export const usePosts = () => {
   return context;
 };
 
-interface PostProviderProps {
+type PostProviderProps = {
   children: React.ReactNode;
-}
+};
 
 export default function PostProvider({ children }: PostProviderProps) {
   const [posts, setPosts] = useState<Post[]>(postData);
 
   const addPost = (title: string, content: string) => {
     setPosts([
-      ...posts,
       {
         id: uuidV4(),
         title,
         content,
         datetime: currDatetime(),
       },
+      ...posts,
     ]);
   };
 

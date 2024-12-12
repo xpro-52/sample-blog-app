@@ -1,5 +1,3 @@
-"use client";
-
 import ListItem from "./ListItem";
 
 type ListProps = {
@@ -20,3 +18,5 @@ export default function List({ items, onItemClick }: ListProps) {
     </ul>
   );
 }
+
+List.displayName = "List";

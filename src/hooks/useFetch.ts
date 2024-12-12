@@ -1,10 +1,10 @@
 import { HttpMethod } from "@/constants/httpMethods";
 import { useState, useEffect } from "react";
 
-interface RequestOptions {
+type RequestOptions = {
   body?: any;
   headers?: Record<string, string>;
-}
+};
 
 async function fetchData<T>(
   url: string,

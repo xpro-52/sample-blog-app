@@ -6,3 +6,5 @@ type ListItemProps = {
 export default function ListItem({ children, onClick }: ListItemProps) {
   return <li onClick={onClick}>{children}</li>;
 }
+
+ListItem.displayName = "ListItem";
