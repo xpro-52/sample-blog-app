@@ -13,13 +13,13 @@ type PostContextType = {
 
 const PostContext = createContext<PostContextType | undefined>(undefined);
 
-export const usePosts = () => {
+export function usePosts() {
   const context = useContext(PostContext);
   if (!context) {
     throw new Error("usePosts must be used within a PostProvider");
   }
   return context;
-};
+}
 
 type PostProviderProps = {
   children: React.ReactNode;
