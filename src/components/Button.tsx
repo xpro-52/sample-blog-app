@@ -1,28 +1,21 @@
-type ButtonProps = {
-  children: React.ReactNode;
-  onClick?: () => void;
-  type?: "button" | "submit" | "reset";
-  size?: "small" | "medium" | "large";
-  disabled?: boolean;
-  className?: string;
-};
+import React from "react";
 
-export default function Button({
-  children,
-  onClick,
-  type = "button",
-  size = "medium",
-  disabled = false,
-  className = "",
-}: ButtonProps) {
-  return (
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, children, disabled, type = "button", ...props }, ref) => (
     <button
       type={type}
-      onClick={onClick}
-      className={`btn-${size} ${className}`}
+      className={className}
       disabled={disabled}
+      ref={ref}
+      {...props}
     >
       {children}
     </button>
-  );
-}
+  )
+);
+
+Button.displayName = "Button";
+
+export default Button;
